@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="msgcontainer">
+        <p id="msg">Winner</p>
+        <button onclick="startNewGame()" id="newgame">New Game</button>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const winner = localStorage.getItem("winnerName");
+            const msg = document.getElementById("msg");
+
+            if (winner) {
+                msg.innerText = `Congratulations, Winner is ${winner}`;
+            } else {
+                msg.innerText = "No winner found.";
+            }
+        }
+
+        function startNewGame() {
+            localStorage.removeItem("winnerName"); // Optional: reset stored winner
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
